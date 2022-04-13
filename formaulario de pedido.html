@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="js/jquery-ui.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <title>formulario de pedido</title>
+    <style>
+        fieldset {
+            width: 300px;
+        }
+        
+        legend {
+            font-weight: 600;
+        }
+        
+        * {
+            font-family: Arial;
+        }
+        
+        input[type=text] {
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        var i;
+        
+        if(localStorage.length>0){
+            i=parseInt(localStorage.getItem("qtde"))+1;
+        }else{
+            localStorage.setItem("qtde",1);
+            i=localStorage.getItem("qtde");
+        }
+        
+
+        function gravarDados(cliente) {
+            
+            
+            
+            var flag = verificacliente(cliente);
+            // SE flag = 0 não existe o cliente no banco
+            // SE flag != 0 o cliente pode ser salvo no banco.
+            
+            if(flag==0){
+                
+                ultimo = ultimoRegistro(); // verifica o último cliente
+                localStorage.setItem("cliente" + ultimo, $("#cliente").val());
+                localStorage.setItem("nome" + ultimo, $("#nome").val());
+                $("#msg").html("Dados gravados com sucesso");
+                
+                localStorage.setItem("qtde", i);
+                i++;
+                
+                limparCampos();
+            }else{
+                $("#msg").html("nome já existente, remova-o para criar nova entrada");
+            }
+
+        }
+        
+
+        function buscar(cliente) {
+            if (localStorage.length > 0) {
+                var qtde = (localStorage.length-1) / 2;
+                    flag = 0;
+                for (i = 1; i <= qtde; i++) {
+                    if (nome  == localStorage.getItem("nome" + i)) {
+                        flag = i;
+                    }
+                }
+                if (flag != 0) {
+                    $("#msg").html("nome encontrado");
+                    $("#nome").val(localStorage.getItem("nome" + flag));
+                    
+                } else {
+                    $("#msg").html("nome não encontrado");
+                    limparCampos();
+                }
+            }
+        }
+
+        function excluir(nome) {
+            if (localStorage.length > 0) {
+                var qtde = localStorage.getItem("qtde");
+                for (i = 1; i <= qtde; i++) {
+                    if (nome == localStorage.getItem("nome" + i)) {
+                        localStorage.removeItem("nome" + i);
+                        localStorage.removeItem("" + i);
+                        $("#msg").html("nome removido");  
+                        localStorage.setItem("qtde" + qtde-1);
+                    }
+                }
+                
+            }
+        }
+
+        function limparCampos() {
+            $("#").val("");
+            $("#nome").val("");
+
+        }
+        
+        function ultimoRegistro(){
+            
+            var flag;
+            var ultimo = 0;
+            
+            do{
+                ultimo++;
+            }while(localStorage.getItem("nome" + ultimo) != null);
+            //se for diferente de NULO (null) significa que existe então altera o valor da variável ultimo.
+            
+         
+            return ultimo
+        }
+        
+        
+        function verificanome(nome){
+            
+            var flag = 0;
+            if (localStorage.length > 0) {
+                var qtde = (localStorage.length-1) / 2;
+
+                for (i = 1; i <= qtde; i++) {
+                    if (cpf == localStorage.getItem("nome" + i)) {
+                        flag = i;
+                        }
+                    }
+                }
+            return flag
+        }
+        
+
+        $(function() {
+
+            $("#cad").click(function (){
+                nome = $("#nome").val()
+                gravarDados(nome)
+            });
+
+            $("#buscar").click(
+                function() {
+                    nome = $("#nome").val();
+                    buscar(nome)
+                });
+
+            $("#excluir").click(function() {
+                nome = $("#nome").val();
+                excluir(nome)
+            });
+
+            $("#limpaBase").click(function(){
+                localStorage.clear();            
+            })
+
+          
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <form id="form1" name="form1" method="post" action="">
+        <fieldset>
+            <legend>Cadastro de OS</legend>
+            <p>clente :
+                <input name="nome" type="text" id="nome">
+            </p>
+            <p>equipamento:
+                <input name="nome" type="text" id="nome">
+            </p>
+               <p>data de entrada:
+                <input name="nome" type="text" id="nome">
+            </p>
+                <p>data de entrega:
+                <input name="nome" type="text" id="nome">
+            </p>
+
+           
+                <legend>Tipo de garantia :</legend> 
+            <br>
+            <input name="pag" type="radio" id="pag1" value="Sem garantia ">Sem garantia 
+            <br>
+            <input name="pag" type="radio" id="pag2" value="Fabricante ">Fabricante
+            <br>
+            <input name="pag" type="radio" id="pag3" value="extendida">extendida
+            <br>
+            </p>
+            <p>
+                <input type="button" name="button2" id="mostrar" value="Mostrar">
+             <p/>
+             <legend> Resumo :</legend> 
+        </fieldset>
+    </form>
+    <div id="msg" title="Informações">
+
+    </div>
+    <article id="dados"></article>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!-- codificação de caracteres -->
+        <meta charset="utf-8">
+		
+		<!-- título da página -->
+        <title>Exercício de revisão - JSON</title>
+		
+		<!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+        <!-- CSS incorporado -->
+        <style>
+            form{
+                width: 400px;
+                margin: auto;
+            }
+            legend{
+                font-size: 18pt;
+            }
+            input[type=button]{
+                display: block;
+                margin: 5px 0;
+            }
+            fieldset{
+                border: 5px dotted #00f;
+            }
+        </style>
+		
+		<!-- script incorporado -->
+		<script>
+            $(document).ready(function(){
+                localStorage.setItem("compras_a", 0);
+                localStorage.setItem("compras_b", 0);
+                localStorage.setItem("compras_c", 0);
+            });
+            
+            $(function(){
+                var periodo;
+                var passageiros;
+                var classe;
+                var resultado = 0;
+                var acumulador_a = 0;
+                var acumulador_b = 0;
+                var acumulador_c = 0;
+                
+               $("#calc").click(function(){
+                   passageiros = parseInt($("#pes").val());
+                   periodo = parseInt($("#dias").val());
+                   classe = $('input[name="classe"]:checked').val();
+                   
+                   if (classe == "a"){
+                       resultado = 230 * passageiros * periodo;
+                   } else if (classe == "b") {
+                       resultado = 175 * passageiros * periodo;
+                   } else if (classe = "c") {
+                       resultado = 120 * passageiros * periodo;
+                   }
+                   
+                  $("strong").html("R$ "+resultado);
+               });
+                
+                $("#buy").click(function(){
+                    if (classe == "a"){
+                        acumulador_a = parseFloat(localStorage.getItem("compras_a"));
+                        acumulador_a = acumulador_a + resultado;
+                        
+                        localStorage.setItem("compras_a", acumulador_a);
+                   } else if (classe == "b") {
+                       acumulador_b = parseFloat(localStorage.getItem("compras_b"));
+                        acumulador_b = acumulador_b + resultado;
+                        
+                        localStorage.setItem("compras_b", acumulador_b);
+                   } else if (classe = "c") {
+                       acumulador_c = parseFloat(localStorage.getItem("compras_c"));
+                        acumulador_c = acumulador_c + resultado;
+                        
+                        localStorage.setItem("compras_c", acumulador_c);
+                   }
+                    
+                });
+                
+                $("#show").click(function(){
+                   $("#ca").html(localStorage.getItem("compras_a"));
+                    $("#cb").html(localStorage.getItem("compras_b"));
+                    $("#cc").html(localStorage.getItem("compras_c"));
+                });
+            });
+        </script>
+        
+    </head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Formulário</legend>
+            <h2>Pacote de viagem</h2>
+            <p>Quantidade de pessoas:
+            <select id="pes">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            </p>
+            <p>Quantidade de dias:
+            <select id="dias">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            </p>
+            <p>
+                <input type="radio" name="classe" value="a">Classe A (R$ 230,00 por dia)
+            </p>
+            <p>
+                <input type="radio" name="classe" value="b">Classe B (R$ 175,00 por dia)
+            </p>
+            <p>
+                <input type="radio" name="classe" value="c">Classe C (R$ 120,00 por dia)
+            </p>
+
+            <input type="button" value="Calcular" id="calc"/>
+            Total da viagem: <strong></strong>
+            <input type="button" value="Comprar" id="buy"/>
+            <hr/>
+            <input type="button" value="Mostrar" id="show"/>
+            Total de vendas Classe A: R$ <span id="ca"></span><br/>
+            Total de vendas Classe B: R$ <span id="cb"></span><br/>
+            Total de vendas Classe C: R$ <span id="cc"></span>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<html>
+    <head>
+        <title>Prova</title>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+
+            var num1, num2, soma, op, qtd, x;
+            num1 = parseInt(prompt("Digite o primeiro número: "));
+            num2 = parseInt(prompt("Digite o segundo número: "));
+
+            if (num2 > num1)
+            {
+                op = num2;
+                soma = num2;
+                qtd = 0;
+                x = num2;
+
+                while(op >= num1)
+                {
+                    soma = (soma+(op-1));
+                    op = op - 1;
+                }
+                document.write("A somatória dos intervalos " + num1 + " e " + num2 + " é de: " + soma);
+
+                while (x >= num1)
+                {
+                    if (x % 2 == 1)
+                    {
+                        qtd = qtd + 1;
+                    }
+
+                    x = x -1;
+                }
+                document.write(". Neste intervalo, temos o total de " + qtd + " números ímpares ");
+            }
+
+            else if (num1 > num2)
+            {
+                op = num1;
+                soma = num1;
+                qtd = 0;
+                x = num1;
+
+                while(op >= num1)
+                {
+                    soma = (soma+(op-1));
+                    op = op - 1;
+                }
+                document.write("A somatória dos intervalos " + num1 + " e " + num2 + " é de: " + soma);
+
+                while (x >= num2)
+                {
+                    if (x % 2 == 1)
+                    {
+                        qtd = qtd + 1;
+                    }
+
+                    x = x -1;
+                }
+                document.write(". Neste intervalo, temos o total de " + qtd + " números ímpares ");
+            }
+
+            else
+            {
+                soma = (num1 + num2);
+    
+                if (num1 % 2 == 1)
+                    {
+                        document.write("Os números " + num1 + " e " + num2 + " são iguais, portanto a somatória deles é de " + soma + " e ambos são ímpares");
+                    }
+
+                else
+                {
+                    document.write("Os números " + num1 + " e " + num2 + " são iguais, portanto a somatória deles é de " + soma)
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            
+            function validaDados(){
+                
+                if($("#num").val()==""){
+                    $("#resposta").text("escreva algo primeiro");
+                    return false }
+                
+                else{
+                     return true
+                }
+                
+            }
+        
+           $(function(){
+               ("#btn").click(function(){
+                  if( validaDados()==true){
+                      
+                      var n1 = parseInt($("#num1").val());
+                      var n2 = parseInt($())
+                      
+                      var tipo_op = $("input=opera:checked").val():[
+                          
+                      ]
+                      
+                      //EXECUTO a soma e a subtração
+                  }
+               }
+
+             });
+        
+        
+        </script>
+    
+    
+    </head>
+    
+    <body>
+        
+        <form>
+            
+            valor 1 <input type="text" id="num1"/> <br>
+            valor 2 <input type="text" id="num2"/> 
+            <br><br>
+            <input type="radio" id="ad" name="opera" value="1"/> adição
+            <input type="radio" id="sub" name="opera" value="2"/> subtração
+            <br><br>
+            <input type="button" value="calcular" id="btn"/>
+            <br>s
+            <span id="resposta"></span>
+            <br>
+            
+            
+        
+        
+        
+        
+        
+        </form>
+    
+    
+    
+    </body>
+
+
+
+
+
+
+
+</html>

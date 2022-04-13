@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta charset= "UTF-8">
+</head>
+
+<body>
+
+    <script type="text/javascript">
+    var h, peso, sexo, IMC;
+   
+    peso = parseFloat(prompt("digite seu peso "));
+    h = parseFloat(prompt("digite sua altura "));
+    sexo = prompt("digite seu sexo ");
+    IMC = peso / (h * h);
+    if (sexo === "masculino"){
+        if (IMC <20.7){
+        document.write ("Abaixo do peso");
+        }
+
+        else if (IMC>=20.7 && IMC <26.4){
+        document.write ("Peso normal");
+        }
+
+        else if (IMC >=26.4 && IMC <27.0){
+        document.write ("Um pouco acima do peso");
+        }
+
+        else if (IMC >= 27.0 && IMC <31.1){
+        document.write ("Acima do peso");
+        }
+
+        else if (IMC > 31.1){
+        document.write ("Obeso");
+        }
+      
+
+    }
+
+    if (sexo === "feminino"){
+        if (IMC <19.1){
+        document.write ("Abaixo do peso");
+        }
+
+        else if (IMC>=19.1 && IMC <25,6){
+        document.write ("Peso normal");
+        }
+
+        else if (IMC >=25.6 && IMC <27.3){
+        document.write ("Um pouco acima do peso");
+        }
+
+        else if (IMC >= 27.3 && IMC <32.3){
+        document.write ("Acima do peso");
+        }
+
+        else if (IMC > 32.3){
+        document.write ("Obeso");
+        }
+    }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie um script que calcule a área de um triângulo (por meio de um formulário) e 
+        informe se ele é isóceles, 
+        equilatero ou escaleno. 
+        Sendo que equilátero possui 3 lados iguais, 
+        isóceles possui 2 lados iguais e o escaleno possui 
+        todos os lados diferentes.
+    </title>
+</head>
+<body>
+    <script> 
+        var l1 = parseInt (prompt("insira o lado do triangulo"))
+        var l2 = parseInt(prompt("insira o lado 2 do tringulo"))
+        var l3 = parseInt(prompt("insira o lado 3 do triangulo")) 
+
+        if((l1+l2) > l3 && ((l3 + l2)> l1) && ((l1 + l3 ) > l2)){
+            alert("tringulo equilatero que possui 3 lados iguais")
+        }
+        
+        else if ((l1=l2) && (l2 = l3)){
+            alert("Tringulo isoceles que possui 2 lados iguais e 1 diferente" )
+        }
+
+        else if((l1=l2) || (l1=l3) || (l2=l3)){
+            alert("tringulo escaleno que pussui todos os lados diferentes")
+        }else{
+            alert("nao e triangulo")
+        }
+    </script>
+</body>
+</html>

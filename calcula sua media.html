@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calcule sua Média</title>
+        <meta charset="UTF-8">
+        <link href="estilos.css" type="text/css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script>
+        <script>
+       
+
+
+       function validaCampos(){       
+            
+            if($("#nome").val()==""){
+                $("#N").addClass("alerta");
+                $("#N").html("Informe o Nome");
+                return false;
+            }
+            else{
+                if($("#rgm").val()==""){
+                    $("#R").addClass("alerta");
+                     $("#R").html("Informe o RGM");
+                    return false;
+                }
+                else{
+                    if($("#nparcial").val()==""){
+                        $("#N1").addClass("alerta");
+                        $("#N1").html("Informe a Nota Parcial");
+                        return false;
+                    
+                    }else{
+                        if($("#nexercicios").val()==""){
+                            $("#N2").addClass("alerta");
+                            $("#N2").html("Informe a Nota de Exercicios");
+                            return false;
+                        }
+
+                    }                                                               
+                }
+
+                return true;
+            }            
+        }
+        
+        
+            function media(nparcial, nexercicios, nprojeto, nregimental) {
+            var soma;
+            soma = (nparcial + nexercicios + nprojeto + nregimental)/4;
+            return soma;
+            }
+
+            function aluno(){
+            var aluno = media;
+
+            if (aluno >= 6 ){
+                        return "Aprovado";
+                    }
+                    else 
+                        if (aluno >= 3 && aluno <6)
+                        {
+                            return "Exame";
+                        }
+
+                            else {
+                                return "Reprovado";
+                            }
+
+            }
+
+
+            $(function(){
+  
+                    $("#resultados").click(function(){
+                    $(".resul").slideToggle("slow")
+                    
+              });
+            });
+
+            $(function() {
+                $("#calcular").click(function() {
+                var nparcial, nexercicios, nprojeto, nregimental;
+
+                nparcial = parseFloat($("#nparcial").val());
+                nexercicios = parseFloat($("#nexercicios").val());
+                nprojeto = parseFloat($("#nprojeto").val());
+                nregimental = parseFloat($("#nregimental").val());
+                $("#resul").append(media(nparcial, nexercicios, nprojeto, nregimental));
+                $("#NOME").append($("#nome").val());
+                $("#RGM").append($("#rgm").val());
+                $("#NPARCIAL").append($("#nparcial").val());
+                $("#NEXERCICIOS").append($("#nexercicios").val());
+                $("#NPROJETO").append($("#nprojeto").val());
+                $("#NREGIMENTAL").append($("#nregimental").val());
+                $("#ALUNO").append($(aluno).val());
+
+             });
+            });
+            $(function(){
+            
+                    $("#calcular").click(function(){
+                    $("#NOME").val(nome);
+                    $("#RGM").val(rgm);
+                    $("#NPARCIAL").val(nparcial);   
+                    $("#NEXERCICIOS").val(nexercicios);
+                    $("#NPROJETO").val(nprojeto);
+                    $("#NREGIMENTAL").val(nregimental);
+                    $(".media").val(resul);
+                    $("#ALUNO").val(aluno);
+        
+                });
+            });
+
+
+
+                $(function() {
+                 $("#calcular").click(function() {
+                    $(".form").val("");
+
+                });
+            });
+            $(function() {
+                 $("#Limpar").click(function() {
+                    location.reload()
+
+                });
+            });
+
+        </script>
+
+    </head>
+    <body>
+        <header><h1>Calcule a Média</h1></header>
+            <label id="resultados">
+                <div><b>Clique aqui para ver o resultado</b></div>
+            </label>    
+            <form action="" method="post" class="fundo">
+                <br>Nome:                 <br><input class="form" type="text" id="nome" placeholder="Digite seu nome">
+                <br>RGM:                  <br><input class="form" type="text" id="rgm" placeholder="Digite seu RGM">
+                <br>Nota Parcial:         <br><input class="form" type="text" id="nparcial" placeholder="Digite a Nota Parcial">
+                <br>Nota dos Exercicios:  <br><input class="form" type="text" id="nexercicios" placeholder="Digite a Nota de Exercicios">
+                <br>Nota do Projeto:      <br><input class="form" type="text" id="nprojeto" placeholder="Digite a Nota do Projeto">
+                <br>Nota Regimental:      <br><input class="form" type="text" id="nregimental" placeholder="Digite a Nota Regimental"><br><br>
+        
+                 <button id="calcular" type="button"> Enviar </button>
+                 <button id="Limpar" type="button"> Limpar </button>
+            </form>
+            <div class="resul">
+                <b><div id="NOME">Nome: </div></class></b>
+                <br><b><div id="RGM">RGM: </div></b>
+                <br><b><div id="NPARCIAL">Nota Parcial: </div></b>
+                <br><b><div id="NEXERCICIOS">Nota dos Exercicios: </div></b>
+                <br><b><div id="NPROJETO">Nota do Projeto: </div></b>
+                <br><b><div id="NREGIMENTAL">Nota Regimental: </div></b>
+                <br><b><div id="resul">Média Final: </div></b><br><br>
+                <br><b><div id="ALUNO">  </div></b>
+                
+            </div>
+    </body>
+
+
+
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+        
+           $(function(){
+
+             $("#btn").click(function(){
+               
+               if( $("#num1").val()=="" || $("#num").val()==""){
+                   $("#resultado").text("Escreva mane")}
+               else{
+                   var n1 = parseFloat( $("#num1").val() );
+                   var n2 = parseFloat( $("#num2").val() );
+                   $("#resposta").text(n1 + n2 );
+                   
+               }
+               
+           })
+             
+             
+             });
+        
+        
+        </script>
+    
+    
+    </head>
+    
+    <body>
+        
+        <form>
+            
+            valor 1 <input type="text" id="num1"/> <br>
+            valor 2 <input type="text" id="num2"/> <br>
+                   <span id="resultado"> </span>
+            <br><br>
+            <input type="button" value="calcular" id="btn"/>
+            <br>
+            <span id="resposta"></span>
+            
+        
+        
+        
+        
+        
+        </form>
+    
+    
+    
+    </body>
+
+
+
+
+
+
+
+</html>

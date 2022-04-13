@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    var termo1 = "";
+    var termo2 = "";
+
+        function gravaTermo1(){
+            termo1 = parseFloat(document.getElementById("campo").value = "");
+            
+        }
+
+        
+
+        function soma(){
+            termo2 = parseFloat(document.getElementById("campo").value = "");
+            document.getElementById("campo").value = termo1 + termo2;
+        }
+
+        function apaga(){
+            termo1 = document.getElementById("campo").value = "";
+
+        }
+
+                    
+    
+    
+    
+    </script>
+    
+</body>
+
+<input type="text" id="campo" />
+
+
+</br> </br>
+
+<input type="button" value="+" onclick="gravaTermo1()"/>
+
+<input type="button" value="=" onclick="soma()"/>
+
+<input type="button" value="c" onclick="apaga()"/>
+
+
+
+</html>
